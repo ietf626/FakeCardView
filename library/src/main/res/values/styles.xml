@@ -1,0 +1,24 @@
+<resources>
+
+    <declare-styleable name="FakeCardView">
+        <attr name="cardBackgroundColor" format="color"></attr>
+        <attr name="cardCornerRadius" format="dimension"></attr>
+        <attr name="cardElevation" format="dimension"></attr>
+        <attr name="cardMaxElevation" format="dimension"></attr>
+        <attr name="cardPreventCornerOverlap" format="boolean"></attr>
+        <attr name="contentPadding" format="dimension"></attr>
+        <attr name="contentPaddingBottom" format="dimension"></attr>
+        <attr name="contentPaddingLeft" format="dimension"></attr>
+        <attr name="contentPaddingRight" format="dimension"></attr>
+        <attr name="contentPaddingTop" format="dimension"></attr>
+        <attr name="android_minWidth" format="dimension"></attr>
+        <attr name="android_minHeight" format="dimension"></attr>
+    </declare-styleable>
+    <style name="FakeCardView" parent="Base.FakeCardView"/>
+    <style name="Base.FakeCardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+</resources>

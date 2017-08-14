@@ -16,6 +16,7 @@
 
 package io.github.proton626.library;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -32,16 +33,6 @@ import android.widget.FrameLayout;
 /**
  * A FrameLayout with a rounded corner background and shadow.
  *
- * @attr ref R.styleable#FakeCardView_cardBackgroundColor
- * @attr ref R.styleable#FakeCardView_cardCornerRadius
- * @attr ref R.styleable#FakeCardView_cardElevation
- * @attr ref R.styleable#FakeCardView_cardMaxElevation
- * @attr ref R.styleable#FakeCardView_cardPreventCornerOverlap
- * @attr ref R.styleable#FakeCardView_contentPadding
- * @attr ref R.styleable#FakeCardView_contentPaddingLeft
- * @attr ref R.styleable#FakeCardView_contentPaddingTop
- * @attr ref R.styleable#FakeCardView_contentPaddingRight
- * @attr ref R.styleable#FakeCardView_contentPaddingBottom
  */
 public class FakeCardView extends FrameLayout {
 
@@ -105,11 +96,6 @@ public class FakeCardView extends FrameLayout {
      * @param top    The top padding in pixels
      * @param right  The right padding in pixels
      * @param bottom The bottom padding in pixels
-     * @attr ref R.styleable#FakeCardView_contentPadding
-     * @attr ref R.styleable#FakeCardView_contentPaddingLeft
-     * @attr ref R.styleable#FakeCardView_contentPaddingTop
-     * @attr ref R.styleable#FakeCardView_contentPaddingRight
-     * @attr ref R.styleable#FakeCardView_contentPaddingBottom
      */
     public void setContentPadding(int left, int top, int right, int bottom) {
         mContentPadding.set(left, top, right, bottom);
@@ -205,7 +191,6 @@ public class FakeCardView extends FrameLayout {
      * Updates the background color of the CardView
      *
      * @param color The new color to set for the card background
-     * @attr ref R.styleable#FakeCardView_cardBackgroundColor
      */
     public void setCardBackgroundColor( int color) {
         IMPL.setBackgroundColor(mCardViewDelegate, ColorStateList.valueOf(color));
@@ -215,7 +200,6 @@ public class FakeCardView extends FrameLayout {
      * Updates the background ColorStateList of the CardView
      *
      * @param color The new ColorStateList to set for the card background
-     * @attr ref R.styleable#FakeCardView_cardBackgroundColor
      */
     public void setCardBackgroundColor( ColorStateList color) {
         IMPL.setBackgroundColor(mCardViewDelegate, color);
@@ -270,7 +254,6 @@ public class FakeCardView extends FrameLayout {
      * Updates the corner radius of the CardView.
      *
      * @param radius The radius in pixels of the corners of the rectangle shape
-     * @attr ref R.styleable#FakeCardView_cardCornerRadius
      * @see #setRadius(float)
      */
     public void setRadius(float radius) {
@@ -291,7 +274,6 @@ public class FakeCardView extends FrameLayout {
      * Updates the backward compatible elevation of the CardView.
      *
      * @param elevation The backward compatible elevation in pixels.
-     * @attr ref R.styleable#FakeCardView_cardElevation
      * @see #getCardElevation()
      * @see #setMaxCardElevation(float)
      */
@@ -314,7 +296,6 @@ public class FakeCardView extends FrameLayout {
      * Updates the backward compatible maximum elevation of the CardView.
      *
      * @param maxElevation The backward compatible maximum elevation in pixels.
-     * @attr ref R.styleable#FakeCardView_cardMaxElevation
      * @see #setCardElevation(float)
      * @see #getMaxCardElevation()
      */
@@ -356,7 +337,6 @@ public class FakeCardView extends FrameLayout {
      *
      * @param preventCornerOverlap Whether FakeCardView should add extra padding to content to avoid
      *                             overlaps with the FakeCardView corners.
-     * @attr ref R.styleable#FakeCardView_cardPreventCornerOverlap
      */
     public void setPreventCornerOverlap(boolean preventCornerOverlap) {
         if (preventCornerOverlap != mPreventCornerOverlap) {
@@ -370,7 +350,7 @@ public class FakeCardView extends FrameLayout {
         super.onLayout(changed, left, top, right, bottom);
         clip(changed, left, top, right, bottom);
     }
-
+    @TargetApi(21)
     private void clip(boolean changed, final int left, final int top, final int right, final int bottom) {
         if (changed) {
             View view = getChildAt(0);
